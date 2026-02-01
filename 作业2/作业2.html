@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> MY IDOL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 微软雅黑;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #ff69b4;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: navFade 1s ease-in-out;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../作业2图片/E07F3F2C5AE81D290FBDAA7241C64745.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 5%;
+      animation: heroFade 1.5s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+      animation: textSlide 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      animation: textFade 1.2s ease-out;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #ff4d94;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .about {
+      padding: 5rem 5%;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #ff69b4;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: #ff69b4;
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1 1 500px;
+      font-size: 1.1rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-img {
+      flex: 1 1 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .about-img:hover {
+      transform: translateY(-10px);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .members {
+      padding: 5rem 5%;
+      background-color: #f8f9fa;
+    }
+
+    .members-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .member-card {
+      width: 280px;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      animation: cardFade 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .member-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .member-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .member-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .member-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .member-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .member-card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .member-card:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .member-card:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+
+    .member-card:nth-child(9) {
+      animation-delay: 0.9s;
+    }
+
+    .member-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2);
+    }
+
+    .member-img {
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .member-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .member-card:hover .member-img img {
+      transform: scale(1.1);
+    }
+
+    .member-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #ff69b4;
+    }
+
+    .member-info p {
+      color: #666;
+    }
+
+    .songs {
+      padding: 5rem 5%;
+      background-color: white;
+    }
+
+    .songs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .song-card {
+      width: 250px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .song-card:hover {
+      background-color: #ffe6f2;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+    }
+
+    .song-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 5%;
+    }
+
+    @keyframes navFade {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes textSlide {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes textFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes cardFade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">TWICE</div>
+    <ul class="nav-links">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#members">成员</a></li>
+      <li><a href="#songs">热门歌曲</a></li>
+    </ul>
+  </nav>
+  <section class="hero" id="home">
+    <h1>TWICE</h1>
+    <p>TWICE (트와이스) 是JYP
+      Entertainment于2015年10月20日推出的韩国女子演唱团体，由林娜琏、俞定延、平井桃(Momo)、凑崎纱夏(Sana)、朴志效、名井南(Mina)、金多贤、孙彩瑛、周子瑜9名成员组成。</p>
+    <a href="#members" class="btn">认识成员</a>
+  </section>
+  <section class="about" id="about">
+    <h2 class="section-title">关于 TWICE</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>TWICE通过Mnet女团出道生存节目《SIXTEEN》选拔而出，团名TWICE又被我们称为两次女团。”</p>
+        <p>组合以明亮、活泼的音乐风格和充满活力的舞台表演著称，代表作有《Cheer Up》、《TT》、《Likey》、《Feel
+          Special》等，在韩国、日本及全球范围内都拥有极高的人气，特别是TT让twice成功进军日本，重新打开kpop在日本的市场。</p>
+        <p>TWICE的团内氛围也特别好，这也是最吸引我的，很有团魂，像一家人一样。</p>
+      </div>
+      <div class="about-img">
+        <img src="../作业2图片/367cab2fadc57e485a0a7ae89ae4c979_0.jpg" alt="TWICE团体照">
+      </div>
+    </div>
+  </section>
+  <section class="members" id="members">
+    <h2 class="section-title">成员介绍</h2>
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/100fed941fa8b63ca42018d784d41baf_0.jpg" alt="林娜琏">
+        </div>
+        <div class="member-info">
+          <h3>林娜琏</h3>
+          <p>나연 / Nayeon</p>
+          <p>主唱、领舞</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/ae2019add316d157a81501959456c392_0.jpg" alt="俞定延">
+        </div>
+        <div class="member-info">
+          <h3>俞定延</h3>
+          <p>정연 / Jeongyeon</p>
+          <p>主唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/e66d16121dd62407811384c6a3cc45c9_720.jpg" alt="平井桃">
+        </div>
+        <div class="member-info">
+          <h3>平井桃</h3>
+          <p>모모 / Momo</p>
+          <p>主舞、副唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/2fb56a9c0c0c67e11b06f4d8f89386b9_0.jpg" alt="凑崎纱夏">
+        </div>
+        <div class="member-info">
+          <h3>凑崎纱夏</h3>
+          <p>사나 / Sana</p>
+          <p>副唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/6fb224a10431d97d7732343ca4a53bb4_0.jpg" alt="朴志效">
+        </div>
+        <div class="member-info">
+          <h3>朴志效</h3>
+          <p>지효 / Jihyo</p>
+          <p>队长、主唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/74112ab2978dbec143330ac5cc1ee493_0.jpg" alt="名井南">
+        </div>
+        <div class="member-info">
+          <h3>名井南</h3>
+          <p>미나 / Mina</p>
+          <p>主舞、副唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/110117fe4fd2d42eead2d1a9396b8945_0.jpg" alt="金多贤">
+        </div>
+        <div class="member-info">
+          <h3>金多贤</h3>
+          <p>다현 / Dahyun</p>
+          <p>说唱、副唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/96e32dae37fab687a8616f6a84856110_0.jpg" alt="孙彩瑛">
+        </div>
+        <div class="member-info">
+          <h3>孙彩瑛</h3>
+          <p>채영 / Chaeyoung</p>
+          <p>说唱、副唱</p>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-img">
+          <img src="../作业2图片/31dacd9cca046a1e0f8e5d2c97fd37ff_0.jpg" alt="周子瑜">
+        </div>
+        <div class="member-info">
+          <h3>周子瑜</h3>
+          <p>쯔위 / Tzuyu</p>
+          <p>领舞、副唱</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="songs" id="songs">
+    <h2 class="section-title">热门歌曲</h2>
+    <div class="songs-list">
+      <div class="song-card">
+        <h3>Cheer Up</h3>
+        <p>发行时间：2016年</p>
+      </div>
+      <div class="song-card">
+        <h3>TT</h3>
+        <p>发行时间：2016年</p>
+      </div>
+      <div class="song-card">
+        <h3>Likey</h3>
+        <p>发行时间：2017年</p>
+      </div>
+      <div class="song-card">
+        <h3>Feel Special</h3>
+        <p>发行时间：2019年</p>
+      </div>
+      <div class="song-card">
+        <h3>What is Love?</h3>
+        <p>发行时间：2018年</p>
+      </div>
+      <div class="song-card">
+        <h3>Scientist</h3>
+        <p>发行时间：2021年</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p> TWICE FANS PYJ</p>
+  </footer>
+</body>
+
+</html>
